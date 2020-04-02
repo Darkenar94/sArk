@@ -1,1 +1,1 @@
-If you want to read the documentation in Italian click here:
+Se vuoi leggere la documentazione in Italiano clicca qui:
