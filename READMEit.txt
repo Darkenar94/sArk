@@ -49,6 +49,6 @@ TheIsland; TheCenter; Ragnarok e Valguero.
 ********************************************************************************
 TIPS AND TRICKS:
 ********************************************************************************
-1. cheat saveworld > sArkV16 > backup completo
+1. cheat saveworld > sArkV1 > backup completo
 2. problema in-game? > sostituzione salvataggio con backup > riavvio ark
 *******************************************************************************
