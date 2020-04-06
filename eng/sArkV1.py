@@ -1,10 +1,9 @@
-
 import os
 import time
 from datetime import datetime
 
 def separa():
-    print("----------------------------------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------")
 
 def cartella(salvataggi, mappa):
     cartella = os.path.split(salvataggi)
@@ -16,7 +15,9 @@ def creaConfigFile(percorso, cartella):
     file.write(cartella + "\n")
     file.close()
 
-def errore(cartella):
+def errore(cartella, mappa):
+    if mappa == "TheIsland":
+        mappa = "\\"
     cartellaBackup = os.getenv("USERPROFILE") + "\\Desktop\\arkBackups"
     while os.path.exists(cartella) == False or "SavedArksLocal" not in cartella or len(os.listdir(cartella)) == 0:
         separa()
@@ -60,7 +61,7 @@ def leggiFile(percorso, mappa):
     configFile = cerca(tmpConfigFile, mappa)
     return configFile
 
-def definisciPercorso(alfabeto, salvataggi):
+def definisciPercorso(alfabeto, salvataggi, mappa):
     for lettera in alfabeto:
         percorso = lettera + ":\\Program Files (x86)" + salvataggi[2:]
         if os.path.exists(percorso):
@@ -70,15 +71,14 @@ def definisciPercorso(alfabeto, salvataggi):
         if os.path.exists(percorso):
             salvataggi = percorso
             return percorso
-    salvataggi = errore(percorso)
+    salvataggi = errore(percorso, mappa)
     return salvataggi
 
 def esiste(salvataggi, alfabeto):
     if os.path.exists(salvataggi):
         return salvataggi
-    else:
-        salvataggi = definisciPercorso(alfabeto,salvataggi)
-        return salvataggi
+    salvataggi = definisciPercorso(alfabeto, salvataggi, mappa)
+    return salvataggi
 
 def svuotare(cartella):
     for file in os.listdir(cartella):
@@ -98,15 +98,15 @@ def stampaBackups(salvataggi, lista, num):
                 num += 1
     if len(lista) == 0:
         return None
-    else:
-        print(str(num) + ". cancel operation")
+    print(str(num) + ". cancel operation")
 
 
 cartellaBackup = os.getenv("USERPROFILE") + "\\Desktop\\arkBackups"
 salvataggi = "D:\\Steam\\steamapps\\common\\ARK\\ShooterGame\\Saved\\SavedArksLocal"
+stringa = "mappa selezionata. "
 mappa = "x"
 
-print("\n------------------------------------------------------------------------- sArkV1 By Darkenar94 -----------")
+print("\n-------------------------------------------- sArkV1 By Darkenar94 -----")
 print("Select the map you'd like to work with:")
 separa()
 print("1. TheIsland\n2. TheCenter\n3. Ragnarok\n4. Valguero")
@@ -116,22 +116,22 @@ while True:
     operazione = input(">>> ")
     separa()
     if operazione == "1":
-        print("map selected. " + "(TheIsland)")
+        print(stringa + "(TheIsland)")
         mappa = "TheIsland"
         break
     elif operazione == "2":
         salvataggi = cartella(salvataggi, "\\TheCenter")
-        print("map selected. " + "(TheCenter)")
+        print(stringa + "(TheCenter)")
         mappa = "TheCenter"
         break
     elif operazione == "3":
         salvataggi = cartella(salvataggi, "\\Ragnarok")
-        print("map selected. " + "(Ragnarok)")
+        print(stringa + "(Ragnarok)")
         mappa = "Ragnarok"
         break
     elif operazione == "4":
         salvataggi = cartella(salvataggi, "\\Valguero")
-        print("map selected. " + "(Valguero)")
+        print(stringa + "(Valguero)")
         mappa = "Valguero"
         break
     else:
@@ -145,7 +145,7 @@ alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q",
 if os.path.exists(os.path.join(cartellaBackup, "sArk.config")):
     salvataggi = leggiFile(cartellaBackup, mappa)
 else:
-    salvataggi = esiste(salvataggi, alfabeto)
+    salvataggi = esiste(salvataggi, alfabeto, mappa)
 
 lista = []
 num = 1
@@ -164,7 +164,7 @@ while True:
             pass
         else:
             os.mkdir(cartellaBackup)
-        if esiste(salvataggi, alfabeto):
+        if esiste(salvataggi, alfabeto, mappa):
             pass
         print("started creating backup.")
         separa()
@@ -179,16 +179,17 @@ while True:
         print("backup completed.")
         separa()
     elif opzione == "2":
-        print("WARNING: the option you selected will replace the saving with the backup.")
+        print("WARNING: ")
+        separa()
+        print("about to subsitute saving with backup.")
         separa()
         scelta = input("proceed? Y/n: ")
         scelta = scelta.lower()
         if scelta == "s":
-            if esiste(salvataggi, alfabeto):
+            if esiste(salvataggi, alfabeto, mappa):
                 pass
             separa()
-            listaFiles = os.listdir(os.getenv("USERPROFILE") + "\\Desktop")
-            if "arkBackups" in listaFiles and len(os.listdir(cartellaBackup)) > 0:
+            if os.path.exists(cartellaMappa) and len(os.listdir(cartellaMappa)) > 0:
                 print("file substitution in progress.")
                 percorsoDiviso = os.path.split(salvataggi)
                 vecchioSalvataggio = percorsoDiviso[0] + "\\oldSaving" + mappa
@@ -229,7 +230,7 @@ while True:
             print("command not found.")
             separa()
     elif opzione == "3":
-        if esiste(salvataggi, alfabeto):
+        if esiste(salvataggi, alfabeto, mappa):
             pass
         print("backup created by the game:")
         separa()
@@ -271,7 +272,8 @@ while True:
         print("quitting automatically in (3) seconds...")
         separa()
         time.sleep(3)
-        quit()
+        break
     else:
         print("this option does not exist.")
         separa()
+
