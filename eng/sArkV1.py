@@ -1,13 +1,4 @@
 
-# COMPILARE IL PROGRAMMA:
-# cd C:\Users\Darkenar94\AppData\Local\Programs\Python\Python38-32\scripts
-# pyinstaller percorso\File.py
-
-# AGGIUNGERE L'ICONA.
-
-# stampare errori su un file ???
-# aggiornamento del programma in caso di nuova versione ???
-
 import os
 import time
 from datetime import datetime
