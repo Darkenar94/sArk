@@ -215,7 +215,7 @@ while True:
                     separa()
                     print("failsafe created at:", percorsoDiviso[0])
                 else:
-                    print("no savings found impossible to transfer files failsafe folder.")
+                    print("no savings found impossible to transfer files to failsafe folder.")
                 separa()
                 print("file substitution in progress...")
                 separa()
