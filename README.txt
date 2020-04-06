@@ -1,6 +1,6 @@
 
 Per leggere la documentazione in italiano, visita il link 
-https://github.com/harisont/sArk/blob/master/READMEit.txt
+https://github.com/Darkenar94/sArk/blob/master/READMEit.txt
 
 ********************************************************************************
 WHAT THIS PROGRAM IS FOR:
