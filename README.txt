@@ -53,3 +53,6 @@ TIPS AND TRICKS:
 1. cheat saveworld > sArkV1 > full backup
 2. in-game problem? > substitute saving with backup > restart ark
 *******************************************************************************
+DOWNLOAD:
+https://github.com/Darkenar94/sArk/releases/download/V1eng/sArkV1.exe
+*******************************************************************************
