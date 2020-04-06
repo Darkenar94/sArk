@@ -31,7 +31,7 @@ def errore(cartella):
         separa()
         print("error: folder containing ARK savings not found or EMPTY. ")
         print("keep playing so that the game automatically creates savings or")
-        print("insert the right path manually again...")
+        print("insert the right path manually...")
         separa()
         cartella = os.path.abspath(input("> "))
     if os.path.exists(cartellaBackup):
