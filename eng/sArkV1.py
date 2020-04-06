@@ -74,7 +74,7 @@ def definisciPercorso(alfabeto, salvataggi, mappa):
     salvataggi = errore(percorso, mappa)
     return salvataggi
 
-def esiste(salvataggi, alfabeto):
+def esiste(salvataggi, alfabeto, mappa):
     if os.path.exists(salvataggi):
         return salvataggi
     salvataggi = definisciPercorso(alfabeto, salvataggi, mappa)
