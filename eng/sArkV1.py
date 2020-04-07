@@ -185,7 +185,7 @@ while True:
         separa()
         scelta = input("proceed? Y/n: ")
         scelta = scelta.lower()
-        if scelta == "s":
+        if scelta == "Y":
             if esiste(salvataggi, alfabeto, mappa):
                 pass
             separa()
