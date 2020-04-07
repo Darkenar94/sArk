@@ -103,7 +103,7 @@ def stampaBackups(salvataggi, lista, num):
 
 cartellaBackup = os.getenv("USERPROFILE") + "\\Desktop\\arkBackups"
 salvataggi = "D:\\Steam\\steamapps\\common\\ARK\\ShooterGame\\Saved\\SavedArksLocal"
-stringa = "mappa selezionata. "
+stringa = "selected map. "
 mappa = "x"
 
 print("\n-------------------------------------------- sArkV1 By Darkenar94 -----")
