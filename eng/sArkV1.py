@@ -82,7 +82,7 @@ def esiste(salvataggi, alfabeto, mappa):
 
 def svuotare(cartella):
     for file in os.listdir(cartella):
-        if file == "sArk.config":
+        if file == "sArk.config" or file.lower() == "serverpaintingscache":
             pass
         else:
             os.remove(os.path.join(cartella,file))
