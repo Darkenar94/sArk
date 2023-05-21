@@ -251,7 +251,7 @@ def scelta_backup(cartellaMappa):
                 pygame.quit()
         finestra.fill((0, 0, 0))
         nome_salvataggio = os.path.split(percorso_immagine)[1]
-        nome_modificato = nome_salvataggio[0:-5] + " " + nome_salvataggio[11:-4]
+        nome_modificato = "salvataggio" + " " + nome_salvataggio[11:-4]
         img = pygame.image.load(percorso_immagine)
         img = pygame.transform.scale(img, (200, 180))
         font = pygame.font.SysFont(None, 24)
