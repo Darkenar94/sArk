@@ -299,6 +299,8 @@ def gestione_sostituzione(cartellaMappa, salvataggi, mappa):
     separa()
     if os.path.exists(cartellaMappa) and len(os.listdir(cartellaMappa)) > 0:
         print("operazione sostituzione files avviata.")
+        separa()
+        print("premere invio per scegliere il salvataggio.")
         backup = scelta_backup(cartellaMappa)
         percorsoDiviso = os.path.split(salvataggi)
         vecchioSalvataggio = percorsoDiviso[0] + "\\vecchioSalvataggio" + mappa
