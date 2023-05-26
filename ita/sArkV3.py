@@ -134,13 +134,38 @@ def gestione_esistenza(cartellaMappa):
         print("backup già esistente, creazione nuovo backup in corso...")
         separa()
 
+def conta(lista):
+    lista_numeri = []
+    for numero in range(len(lista)):
+        lista_numeri.append(numero+1)
+    return lista_numeri
+
+def ordina(lista_files, percorsi=None, estensione=None):
+    conteggio_elementi = conta(lista_files)
+    nuova_lista = []
+    for numero in conteggio_elementi:
+        for file in lista_files:
+            if not percorsi == None:
+                nome_file = os.path.split(file)[1]
+                if estensione == ".png":
+                    if numero == int(nome_file[11:-4]):
+                        nuova_lista.append(file)
+                elif estensione == ".zip":
+                    if numero == int(nome_file[8:-4]):
+                        nuova_lista.append(file)
+            else:
+                if numero == int(file[8:-4]):
+                    nuova_lista.append(file)
+    return nuova_lista
+            
 def controlla_archivi(cartellaMappa):
     lista_archivi = []
     for nome_file in os.listdir(cartellaMappa):
         if ".zip" in nome_file:
             lista_archivi.append(nome_file)
     if not len(lista_archivi) == 0:
-        return int(lista_archivi[-1][8:-4])
+        archivi_ordinati = ordina(lista_archivi)
+        return int(archivi_ordinati[-1][8:-4])
     return 0
 
 def salva_screenshot(numero, cartellaMappa):
@@ -199,7 +224,7 @@ def ottieni_foto_salvataggi(cartellaMappa):
     for nome_file in os.listdir(cartellaMappa):
         if ".png" in nome_file:
             lista_salvataggi.append(os.path.join(cartellaMappa, nome_file))
-    return lista_salvataggi
+    return ordina(lista_salvataggi, percorsi=True, estensione=".png")
 
 def ottieni_data_salvataggi(lista_foto_salvataggi):
     lista_date = []
@@ -212,7 +237,7 @@ def ottieni_salvataggi(cartellaMappa):
     for file in os.listdir(cartellaMappa):
         if not ".png" in file:
             lista_archivi.append(os.path.join(cartellaMappa, file))
-    return lista_archivi
+    return ordina(lista_archivi, percorsi=True, estensione=".zip")
 
 def scelta_backup(cartellaMappa):
     pygame.font.init()
